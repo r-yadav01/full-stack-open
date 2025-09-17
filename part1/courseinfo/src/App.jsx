@@ -7,12 +7,12 @@ function App() {
     const part3 = "State of a component";
     const exercises3 = 14;
 
+    const data = { part1, part2, part3, exercises1, exercises2, exercises3 };
+
     return (
         <div>
             <Header name={course} />
-            <Content part={part1} exercises={exercises1} />
-            <Content part={part2} exercises={exercises2} />
-            <Content part={part3} exercises={exercises3} />
+            <Content parts={data} />
             <Total sum={exercises1 + exercises2 + exercises3} />
         </div>
     );
@@ -22,7 +22,17 @@ function Header({ name }) {
     return <h1>{name}</h1>;
 }
 
-function Content({ part, exercises }) {
+function Content({ parts }) {
+    return (
+        <div>
+            <Part part={parts.part1} exercises={parts.exercises1} />
+            <Part part={parts.part2} exercises={parts.exercises2} />
+            <Part part={parts.part3} exercises={parts.exercises3} />
+        </div>
+    );
+}
+
+function Part({ part, exercises }) {
     return (
         <p>
             {part} {exercises}
